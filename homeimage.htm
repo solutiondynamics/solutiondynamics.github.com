@@ -1,0 +1,71 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body><table id="myTable"><tr><td>dfasd</td><td>dfasd</td></tr>
+    <tr><td>dfasd</td><td>dfasd</td></tr></table>
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+        <script>
+            
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
+
+            ctx.font = '30pt Arial';
+            ctx.fillText('Regular Text', 100, 50);
+
+            ctx.save();
+            //ctx.translate(100, 300);
+            //ctx.rotate(-0.5 * Math.PI);
+
+            var sx = 0.75;
+            // .75 horizontal shear
+            var sy = 0;
+            // no vertical shear
+
+            // translate context to center of canvas
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+
+            // apply custom transform
+            ctx.transform(1, sy, sx, 1, sy, sx);
+
+
+            var rText = '<u>Rotated Text</u>';
+            ctx.fillText(rText, 0, 0);
+            ctx.restore();
+
+            var rWidth = ctx.measureText(rText).width;
+            ctx.fillText('Regular Text', 100, rWidth + 120);
+
+            /*
+            var rectWidth = 150;
+            var rectHeight = 75;
+
+            // shear matrix:
+            //  1  sx  0
+            //  sy  1  0
+            //  0  0  1
+
+            var sx = 0.75;
+            // .75 horizontal shear
+            var sy = 0;
+            // no vertical shear
+
+            // translate context to center of canvas
+            context.translate(canvas.width / 2, canvas.height / 2);
+
+            // apply custom transform
+            context.transform(1, sy, sx, 1, sy, sx);
+
+            context.fillStyle = '#99ccff';
+            context.fillRect(-rectWidth / 2, rectHeight / -2, rectWidth, rectHeight);
+            context.fillText("test");
+            */
+    </script>
+  </body>
+</html>      
